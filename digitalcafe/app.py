@@ -9,8 +9,6 @@ import ordermanagement as om
 
 app = Flask(__name__)
 
-myclient = pymongo.MongoClient("mongodb://localhost:27017/")
-
 # Set the secret key to some random bytes.
 # Keep this really secret!
 app.secret_key = b's@g@d@c0ff33!'
