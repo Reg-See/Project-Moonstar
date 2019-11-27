@@ -6,7 +6,6 @@ import database as db
 import authentication
 import logging
 import ordermanagement as om
-import pymongo
 
 app = Flask(__name__)
 
@@ -170,17 +169,22 @@ def changepassword():
 
 @app.route('/pass_change', methods=['GET', 'POST'])
 def change_pass():
-    order_management_db = myclient["order_management"]
     user_ = session["user"]
-    password = user_["password"]
+    old_p = db.get_password(username)
+    username = user_["username"]
     old_p_form = request.form.get('old_p')
     new_p = request.form.get('new_p')
     new_p_c = request.form.get('new_p_c')
 
-    if old_p_form == password and new_p == new_p_c:
-        get_pass = order_management_db["password"]
-        get_pass.updateOne({"password":password}, {"$set":{"password":new_p}})
-        return render_template("success.html")
+    if old_p_form == old_p and new_p == new_p_c:
+        change_pass = db.change_db(username, new_p)
+        change_error = "Password changed successfully."
+        return render_template("changepassword.html")
 
-    else:
-        return redirect("/changepassword")
+    elif new_p != new_p_c:
+        change_error = "New passwords don't match. Please try again."
+        return render_template("changepassword.html")
+
+    elif old_p_form != old_p:
+        change_error = "Previous password entered incorrectly. Please try again."
+        return render_template("changepassword.html")

@@ -47,6 +47,17 @@ def get_user(username):
     customers_coll = order_management_db['customers']
     user=customers_coll.find_one({"username":username})
     return user
+def get_password(username):
+    customers_coll = order_management_db['customers']
+    user = customers_coll.find_one({"username":username})
+    user_pass = user["password"]
+    return user_pass
+
+def change_db(username, new_p):
+    pw_coll = order_management_db['customers']
+    user = {"username":username}
+    changepw = {"$set":{"password":new_p}}
+    pw_coll.find_one_and_update(user, changepw)
 
 #CHECK-OUT
 def create_order(order):
