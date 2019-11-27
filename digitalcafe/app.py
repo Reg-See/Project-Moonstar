@@ -177,12 +177,12 @@ def change_pass():
     if old_p_form == old_p and new_p == new_p_c:
         change_pass = db.change_db(username, new_p)
         change_error = "Password changed successfully."
-        return render_template("changepassword.html")
+        return render_template("changepassword.html", change_error=change_error)
 
     elif new_p != new_p_c:
         change_error = "New passwords don't match. Please try again."
-        return render_template("changepassword.html")
+        return render_template("changepassword.html", change_error=change_error)
 
     else:
         change_error = "Previous password entered incorrectly. Please try again."
-        return render_template("changepassword.html")
+        return render_template("changepassword.html", change_error=change_error)
