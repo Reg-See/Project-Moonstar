@@ -18,7 +18,7 @@ Us</a> | {% if session["user"] is defined %}
         <a href='/past_orders'>View Past Orders</a>
         Welcome, {{ session["user"]["first_name"] }}.
         <a href='/cart'>View Cart</a> |
-        <a href='/logout'>Logout</a>
+        <a href='/logout'>Logout</a> |
         <a href='/changepassword'>Change Password</a>
         {% else %}
         <a href='/login'>Login</a>
