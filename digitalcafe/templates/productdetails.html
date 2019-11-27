@@ -1,6 +1,5 @@
 {% include "header.html" %}
     <h1>Product Details</h1>
-    
     <form action="/addtocart" method="POST">
       <table>
           <tr><td>Code</td><td>{{ code }}</td></tr>
@@ -15,7 +14,7 @@
               <input type="number" name="quantity" min="1" step="1" pattern="\d*" value="1">
             </td>
           </tr>
-          
+
             <tr>
               <td colspan="3">
                 <input type="submit" value="Add to Cart">
@@ -24,6 +23,5 @@
             {% endif %}
       </table>
     </form>
-    
     <a href="/products">Back</a>
 {% include "footer.html" %}
