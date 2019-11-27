@@ -15,6 +15,7 @@ Wr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
      <a href='/'>Home</a> | <a href='/products'>Products</a> |
      <a href='/branches'>Branches</a> | <a href='/aboutus'>About
 Us</a> | {% if session["user"] is defined %}
+        <a href='/past_orders'>View Past Orders</a>
         Welcome, {{ session["user"]["first_name"] }}.
         <a href='/cart'>View Cart</a> |
         <a href='/logout'>Logout</a>

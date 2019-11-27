@@ -19,11 +19,11 @@
                 {% for item in session["cart"].values() %}
                     <tr>
                         <td>{{ item["name"] }}</td>
-                        <td><input type="number" name="quantity" value="{{ item['qty'] }}" 
+                        <td><input type="number" name="quantity" value="{{ item['qty'] }}"
                             min="1" step="1" pattern="\d*" form="{{ item['code'] }}"></td>
                         <td>{{ item["subtotal"] }}</td>
                         <td>
-                            <input type="hidden" name="code" value="{{ item['code'] }}" form="{{ item['code'] }}"> 
+                            <input type="hidden" name="code" value="{{ item['code'] }}" form="{{ item['code'] }}">
                             <input type="submit" name="submit" value="Update" form="{{ item['code'] }}">
                         </td>
                         <td><input type="submit" name="submit" value="Remove" form="{{ item['code'] }}"></td>
@@ -35,6 +35,7 @@
                     <td colspan="3"><b>{{ session["cart"].values()|sum(attribute="subtotal") }}</b></td>
                 </tr>
             </table>
+            <a href="checkout">Checkout</a>
             {% else %}
             <div>Your cart is empty</div>
             {% endif %}
