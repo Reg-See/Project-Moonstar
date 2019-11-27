@@ -183,6 +183,6 @@ def change_pass():
         change_error = "New passwords don't match. Please try again."
         return render_template("changepassword.html")
 
-    elif old_p_form != old_p:
+    else old_p_form != old_p:
         change_error = "Previous password entered incorrectly. Please try again."
         return render_template("changepassword.html")
