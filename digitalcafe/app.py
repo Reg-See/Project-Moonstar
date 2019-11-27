@@ -168,8 +168,8 @@ def changepassword():
 @app.route('/pass_change', methods=['GET', 'POST'])
 def change_pass():
     user_ = session["user"]
-    old_p = db.get_password(username)
     username = user_["username"]
+    old_p = db.get_password(username)
     old_p_form = request.form.get('old_p')
     new_p = request.form.get('new_p')
     new_p_c = request.form.get('new_p_c')
